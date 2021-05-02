@@ -1,4 +1,5 @@
 //A  Restaurant Project Struct style Dr_T Dr. Tyson McMillan 10-2-2019
+//Edited by Vincent Hong
 
 #include <iostream>
 #include <string>
