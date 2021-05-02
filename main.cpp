@@ -84,7 +84,7 @@ void printReceipt(vector<MenuItem> &m, double subtotal, double cashBack)
   cout << endl << "Again?" << endl;
   char yes;
   cin >> yes;
-  if(yes == 'y' || yes == 'y')
+  if(yes == 'Y' || yes == 'y')
   {
     showMenu(m);
   }
@@ -116,9 +116,10 @@ void acceptOrder(vector<MenuItem> &m)
         cout << "Enter amount: ";
         double x;
         cin >> x;
-        double tip = x / 100;
+        double tip = x / 100.00;
         double toAdd = tip * subtotal;
-        subtotal += m[i].itemCost + toAdd;
+        //cout << toAdd;
+        subtotal += toAdd;
         cout << endl << "Subtotal: $" << subtotal << endl;
         cout << "Cash or Credit?(C for cash CC for credit" << endl;
         string y;
@@ -132,13 +133,13 @@ void acceptOrder(vector<MenuItem> &m)
           if(cashBack < 0)
           {
             cout << "You didn't give enough and went to jail" << endl;
-            break;
+            option = 'x';
           }
           else
           {
             cout << "Cash back: " << cashBack << endl;
             printReceipt(m, subtotal, cashBack);
-            break;
+            option = 'x';
           }
         }
         else if(y == "cc" || y == "CC")
@@ -150,12 +151,12 @@ void acceptOrder(vector<MenuItem> &m)
           if(p == 'd' || p == 'D')
           {
             cout << endl << "You declined and went to jail" << endl;
-            break;
+            option = 'x';
           }
           else if(p == 'a' || p == 'A')
           {
             printReceipt(m, subtotal, 0);
-            break;
+            option = 'x';
           }
         }
       }
